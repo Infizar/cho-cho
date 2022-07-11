@@ -1,0 +1,116 @@
+<body>
+  <table align="center" id="team" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="2" class="title">
+        HATUL --------------------------------------------- ELOL
+      </td>
+    </tr>
+    <tr>
+      <td id="player-0" class="blue"></td>
+      <td id="player-1" class="blue"></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="title">
+         <button id="random">RANDOM</button>
+      </td>
+    </tr>
+    <tr>
+      <td id="player-2" class="red"></td>
+      <td id="player-3" class="red"></td>
+    </tr>
+    <tr>
+  <td colspan="2" class="title">
+         HATUL --------------------------------------------- ELOL
+      </td>
+  </table>
+</body>
+
+<style>
+body {
+  background-color: #232323;
+}
+
+#team td {
+  height: 150px;
+  width: 300px;
+  text-align: center;
+  font-family: Helvetica, Arial, san-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 0px;
+}
+
+#team .title {
+  height: 30px;
+  font-size: 16px;
+}
+
+#team .blue {
+  background-color: blue;
+}
+
+#team .red {
+  background-color: red;
+}
+
+.fade {
+   opacity: 1;
+   transition: opacity .1s ease-in-out;
+   -moz-transition: opacity .1s ease-in-out;
+   -webkit-transition: opacity .1s ease-in-out;
+   }
+</style>
+
+<script>
+var team = [
+  "GERGO",
+  "ADAM",
+  "RICHI",
+  "KRISZTIAN",
+];
+var text = "";
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    var randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    var temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+
+function shuffler() {
+  shuffle(team);
+  document.getElementById("player-0").innerHTML = team[0];
+  document.getElementById("player-1").innerHTML = team[1];
+  document.getElementById("player-2").innerHTML = team[2];
+  document.getElementById("player-3").innerHTML = team[3];
+}
+
+// var myInterval = setInterval(shuffler, 50);
+// clearInterval(myInterval);
+
+document.getElementById("random").addEventListener("click", shuffler);
+
+window.addEventListener("keypress", checkKeyPressed, false);
+ 
+function checkKeyPressed(e) {
+    if (e.charCode == "32") {
+      document.getElementById("random").addEventListener("click", shuffler);    
+    }
+}
+</script>
